@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/main.qml</file>
+        <file>qml/3dlut.frag</file>
+        <file>qml/ContentImage.qml</file>
+        <file>qml/ContentVideo.qml</file>
+        <file>qml/Viewer.qml</file>
+        <file>qml/SettingsPanel.qml</file>
+        <file>qml/ColorHint.qml</file>
+        <file>qml/SlideShowModel.qml</file>
+        <file>qml/qmldir</file>
+        <file>qml/AllLutsModel.qml</file>
+    </qresource>
+</RCC>

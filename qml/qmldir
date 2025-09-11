@@ -1,0 +1,2 @@
+singleton SlideShowModel 1.0 SlideShowModel.qml
+singleton AllLutsModel 1.0 AllLutsModel.qml
