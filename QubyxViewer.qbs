@@ -9,7 +9,7 @@ Project
     ]
     QbxTool
     {
-        name: "AudiViewer"
+        name: "QubyxViewer"
 
         Depends { id: qtcore; name: "Qt.core" }
         Depends {

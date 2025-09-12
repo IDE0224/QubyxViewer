@@ -3,8 +3,8 @@
  * Copyright: QUBYX Software Technologies LTD HK
  */
 
-#ifndef AUDIVIEWERDATA_H
-#define AUDIVIEWERDATA_H
+#ifndef QUBYXVIEWERDATA_H
+#define QUBYXVIEWERDATA_H
 
 #include <QObject>
 #include <QList>
@@ -18,12 +18,12 @@
 #include "ProxyVideoSurface.h"
 
 class LutGenerator;
-class AudiViewerData : public QObject
+class QubyxViewerData : public QObject
 {
     Q_OBJECT
 public:
-    explicit AudiViewerData(QObject *parent = 0);
-    virtual ~AudiViewerData();
+    explicit QubyxViewerData(QObject *parent = 0);
+    virtual ~QubyxViewerData();
 
 private:
     QList<QObject*> model_;
@@ -50,4 +50,4 @@ public slots:
     void slotOpenWorkingProfile(QString filePath);
 };
 
-#endif // AUDIVIEWERDATA_H
+#endif // QUBYXVIEWERDATA_H

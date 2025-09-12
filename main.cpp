@@ -6,7 +6,7 @@
  */
 
 #include <QApplication>
-#include "audiviewerdata.h"
+#include "qubyxviewerdata.h"
 
 int main(int argc, char *argv[]) {
     // initialize resources, if needed
@@ -15,10 +15,10 @@ int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
     QApplication::setOrganizationName("Qubyx");
     QApplication::setOrganizationDomain("qubyx.com");
-    QApplication::setApplicationName("Audi Viewer");
+    QApplication::setApplicationName("Qubyx Viewer");
 
     // create and show your widgets here
-    AudiViewerData viewerData;
+    QubyxViewerData viewerData;
 
     return app.exec();
 }

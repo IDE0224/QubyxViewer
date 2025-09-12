@@ -3,7 +3,7 @@
  * Copyright: QUBYX Software Technologies LTD HK
  */
 
-#include "audiviewerdata.h"
+#include "qubyxviewerdata.h"
 #include "DisplayInfo/CurrentDisplays.h"
 #include <QDebug>
 #include <QQmlContext>
@@ -22,7 +22,7 @@ const QString VISIBLE = "visible";
 const QString MAIN_DISPLAY_ID = "main_display_id";
 
 
-AudiViewerData::AudiViewerData(QObject *parent) : QObject(parent)
+QubyxViewerData::QubyxViewerData(QObject *parent) : QObject(parent)
 {
     qRegisterMetaType<MediaSourceConnector*>();
 
@@ -68,12 +68,12 @@ AudiViewerData::AudiViewerData(QObject *parent) : QObject(parent)
         slotOpenWorkingProfile(profilePath);
 }
 
-AudiViewerData::~AudiViewerData()
+QubyxViewerData::~QubyxViewerData()
 {
     writeDisplayIds();
 }
 
-void AudiViewerData::readDisplayIds()
+void QubyxViewerData::readDisplayIds()
 {
     mainDisplayId_ = settings_.value(MAIN_DISPLAY_ID).toInt();
 
@@ -139,7 +139,7 @@ void AudiViewerData::readDisplayIds()
 
 }
 
-void AudiViewerData::writeDisplayIds()
+void QubyxViewerData::writeDisplayIds()
 {
     for (int i = 0; i < model_.size(); i++)
     {
@@ -162,17 +162,17 @@ void AudiViewerData::writeDisplayIds()
     settings_.endArray();
 }
 
-void AudiViewerData::slotQuit()
+void QubyxViewerData::slotQuit()
 {
     QCoreApplication::quit();
 }
 
-void AudiViewerData::slotOpenWorkingProfile(QString filePath)
+void QubyxViewerData::slotOpenWorkingProfile(QString filePath)
 {
     filePath = filePath.replace("file:///", "");
     filePath = QDir::toNativeSeparators(filePath);
 
-    qDebug() << "AudiViewerData::slotOpenWorkingProfile" << filePath;
+    qDebug() << "QubyxViewerData::slotOpenWorkingProfile" << filePath;
     lutGenerator_->setWorkingProfile(filePath);
 
     QMetaObject::invokeMethod(qml_.rootObjects()[0], "reload3dLut");
