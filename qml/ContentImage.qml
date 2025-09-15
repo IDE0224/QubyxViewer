@@ -34,7 +34,6 @@ Item {
         fragmentShader: fileReader.fragmentShader();
     }
 
-
     function showPixelColor(x, y, itemHint)
     {
         shaderSource.grabToImage(function(result) {

@@ -1,4 +1,4 @@
-/* 
+/*
  * Author: QUBYX Software Technologies LTD HK
  * Copyright: QUBYX Software Technologies LTD HK
  */
@@ -13,7 +13,7 @@ class QMediaPlayerWrapper : public QMediaPlayer
     Q_OBJECT
 
 public:
-    QMediaPlayerWrapper(QObject *parent = 0);
+    QMediaPlayerWrapper(QObject* parent = 0);
 
     Q_INVOKABLE void setMediaFile(QString url);
     Q_INVOKABLE bool isPlaying();

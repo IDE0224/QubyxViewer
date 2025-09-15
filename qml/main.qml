@@ -19,7 +19,6 @@ Item {
                signalOpenWorkingProfile.connect(main.signalOpenWorkingProfile);
                main.signalReload3dLut.connect(reload3dLUT);
 
-
                signalSelectedNewImage.connect(main.updateImageList);
                signalLeftButtonPressed.connect(main.showLeftImage);
                signalRightButtonPressed.connect(main.showRightImage);

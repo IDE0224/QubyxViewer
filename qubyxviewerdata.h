@@ -1,4 +1,4 @@
-/* 
+/*
  * Author: QUBYX Software Technologies LTD HK
  * Copyright: QUBYX Software Technologies LTD HK
  */
@@ -22,13 +22,13 @@ class QubyxViewerData : public QObject
 {
     Q_OBJECT
 public:
-    explicit QubyxViewerData(QObject *parent = 0);
+    explicit QubyxViewerData(QObject* parent = 0);
     virtual ~QubyxViewerData();
 
 private:
     QList<QObject*> model_;
     QQmlApplicationEngine qml_;
-    LutGenerator *lutGenerator_;
+    LutGenerator* lutGenerator_;
 
     FileReader fileReader_;
     PixelHandler pixelHandler_;

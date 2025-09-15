@@ -1,4 +1,4 @@
-/* 
+/*
  * Author: QUBYX Software Technologies LTD HK
  * Copyright: QUBYX Software Technologies LTD HK
  */
@@ -16,33 +16,41 @@
 const QString LAST_PROFILE_PATH = "paths/profile";
 const QString LAST_MEDIAFILE_PATH = "paths/mediafile";
 
-QString FileReader::readFile(const QString &fileName)
+QString FileReader::readFile(const QString& fileName)
 {
     QString content;
     QFile file(fileName);
-    if (file.open(QIODevice::ReadOnly)) {
+
+    if (file.open(QIODevice::ReadOnly))
+    {
         QTextStream stream(&file);
         content = stream.readAll();
     }
+
     return content;
 }
 
-QString FileReader::fileType(const QString &fileName)
+QString FileReader::fileType(const QString& fileName)
 {
     QString fName = fileName;
     fName = fName.replace("file:///", "");
+
     QMimeDatabase db;
     QMimeType mime = db.mimeTypeForFile(fName);
+
     qDebug() << "mime type:" << mime.name();
-    if (mime.name().contains("video", Qt::CaseInsensitive) )
+
+    if (mime.name().contains("video", Qt::CaseInsensitive))
         return "video";
+
     else if (mime.name().contains("image", Qt::CaseInsensitive))
         return "image";
+
     else
         return "unknown";
 }
 
-QStringList FileReader::getListOfImageFiles(const QString &fileName)
+QStringList FileReader::getListOfImageFiles(const QString& fileName)
 {
     qDebug() << "getListOfImageFiles" << fileName;
 
@@ -68,7 +76,7 @@ QStringList FileReader::getListOfImageFiles(const QString &fileName)
     for (int i = 0; i < list.size(); i++)
     {
         QFileInfo fileInfo = list.at(i);
-        res.push_back(fileInfo.absoluteFilePath() );
+        res.push_back(fileInfo.absoluteFilePath());
     }
 
     // place selected image file at begin on list
@@ -102,6 +110,7 @@ QString FileReader::lastProfilePath()
 {
     if (settings_.contains(LAST_PROFILE_PATH))
         return settings_.value(LAST_PROFILE_PATH).toString();
+
     else
         return "";
 }
@@ -129,6 +138,7 @@ QString FileReader::lastMediaPath()
 {
     if (settings_.contains(LAST_MEDIAFILE_PATH))
         return settings_.value(LAST_MEDIAFILE_PATH).toString();
+
     else
         return "";
 }

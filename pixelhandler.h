@@ -1,4 +1,4 @@
-/* 
+/*
  * Author: QUBYX Software Technologies LTD HK
  * Copyright: QUBYX Software Technologies LTD HK
  */
@@ -14,9 +14,9 @@ class PixelHandler : public QObject
 {
     Q_OBJECT
 public:
-    explicit PixelHandler(QObject *parent = 0);
+    explicit PixelHandler(QObject* parent = 0);
 
-    Q_INVOKABLE QColor getColor(QQuickItemGrabResult *item, int x, int y);
+    Q_INVOKABLE QColor getColor(QQuickItemGrabResult* item, int x, int y);
 };
 
 #endif // PIXELHANDLER_H

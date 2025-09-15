@@ -1,4 +1,4 @@
-/* 
+/*
  * Author: QUBYX Software Technologies LTD HK
  * Copyright: QUBYX Software Technologies LTD HK
  */
@@ -10,9 +10,9 @@ class FileReader : public QObject
 {
     Q_OBJECT
 public:
-    Q_INVOKABLE QString readFile(const QString &fileName);
-    Q_INVOKABLE QString fileType(const QString &fileName);
-    Q_INVOKABLE QStringList getListOfImageFiles(const QString &fileName);
+    Q_INVOKABLE QString readFile(const QString& fileName);
+    Q_INVOKABLE QString fileType(const QString& fileName);
+    Q_INVOKABLE QStringList getListOfImageFiles(const QString& fileName);
 
     Q_INVOKABLE QString fragmentShader();
 

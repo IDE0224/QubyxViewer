@@ -1,4 +1,4 @@
-/* 
+/*
  * Author: QUBYX Software Technologies LTD HK
  * Copyright: QUBYX Software Technologies LTD HK
  */
@@ -85,6 +85,7 @@ public slots:
         m_displayId = displayId;
         emit displayIdChanged(displayId);
     }
+
     void setGeometry(QRect geometry)
     {
         if (m_geometry == geometry)
@@ -93,6 +94,7 @@ public slots:
         m_geometry = geometry;
         emit geometryChanged(geometry);
     }
+
     void setVisible(bool visible)
     {
         if (m_visible == visible)
@@ -101,6 +103,7 @@ public slots:
         m_visible = visible;
         emit visibleChanged(visible);
     }
+
     void setLutEnabled(bool lutEnabled)
     {
         if (m_lutEnabled == lutEnabled)
@@ -109,6 +112,7 @@ public slots:
         m_lutEnabled = lutEnabled;
         emit lutEnabledChanged(lutEnabled);
     }
+
     void setName(QString name)
     {
         if (m_name == name)
@@ -117,6 +121,7 @@ public slots:
         m_name = name;
         emit nameChanged(name);
     }
+
     void setIsMainDisplay(bool mainDisplay)
     {
         if (m_mainDisplay == mainDisplay)
@@ -125,6 +130,7 @@ public slots:
         m_mainDisplay = mainDisplay;
         emit mainDisplayChanged(mainDisplay);
     }
+    
     void setDisplayProfile(QString displayProfile)
     {
         if (m_displayProfile == displayProfile)
