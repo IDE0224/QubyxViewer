@@ -1,4 +1,4 @@
-/* 
+/*
  * Author: QUBYX Software Technologies LTD HK
  * Copyright: QUBYX Software Technologies LTD HK
  */
@@ -7,7 +7,7 @@
 #include "MediaSourceConnector.h"
 #include <QDebug>
 
-ProxyVideoSurface::ProxyVideoSurface(QObject *parent) : QAbstractVideoSurface(parent)
+ProxyVideoSurface::ProxyVideoSurface(QObject* parent) : QAbstractVideoSurface(parent)
 {
 
 }
@@ -17,30 +17,15 @@ QList<QVideoFrame::PixelFormat> ProxyVideoSurface::supportedPixelFormats(QAbstra
     if (handleType == QAbstractVideoBuffer::NoHandle)
     {
         return QList<QVideoFrame::PixelFormat>()
-             << QVideoFrame::Format_YUV420P
-             << QVideoFrame::Format_YV12
-             << QVideoFrame::Format_NV12
-             << QVideoFrame::Format_NV21
-             << QVideoFrame::Format_RGB32
-             << QVideoFrame::Format_ARGB32
-             << QVideoFrame::Format_BGR32
-             << QVideoFrame::Format_BGRA32
-             << QVideoFrame::Format_RGB565;
-
-
-//        return QList<QVideoFrame::PixelFormat>()
-//             << QVideoFrame::Format_RGB32
-//             << QVideoFrame::Format_ARGB32
-//             << QVideoFrame::Format_ARGB32_Premultiplied
-//             << QVideoFrame::Format_RGB565
-//             << QVideoFrame::Format_RGB555
-//             << QVideoFrame::Format_RGB24
-//             << QVideoFrame::Format_BGRA32
-//             << QVideoFrame::Format_BGRA32_Premultiplied
-//             << QVideoFrame::Format_BGR32
-//             << QVideoFrame::Format_BGR24
-//             << QVideoFrame::Format_BGR565
-//             << QVideoFrame::Format_BGR555;
+            << QVideoFrame::Format_YUV420P
+            << QVideoFrame::Format_YV12
+            << QVideoFrame::Format_NV12
+            << QVideoFrame::Format_NV21
+            << QVideoFrame::Format_RGB32
+            << QVideoFrame::Format_ARGB32
+            << QVideoFrame::Format_BGR32
+            << QVideoFrame::Format_BGRA32
+            << QVideoFrame::Format_RGB565;
     }
     else
     {
@@ -48,16 +33,17 @@ QList<QVideoFrame::PixelFormat> ProxyVideoSurface::supportedPixelFormats(QAbstra
     }
 }
 
-bool ProxyVideoSurface::present(const QVideoFrame &frame)
+bool ProxyVideoSurface::present(const QVideoFrame& frame)
 {
     static bool firstCall = true;
     if (firstCall)
         qDebug() << "pixelFormat" << frame.pixelFormat();
+
     firstCall = false;
 
     for (auto connector : connectors_)
     {
-        QAbstractVideoSurface *surface = connector.second->getVideoSurface();
+        QAbstractVideoSurface* surface = connector.second->getVideoSurface();
         if (surface)
             surface->present(frame);
     }
@@ -65,12 +51,14 @@ bool ProxyVideoSurface::present(const QVideoFrame &frame)
     return true;
 }
 
-bool ProxyVideoSurface::start(const QVideoSurfaceFormat &format)
+bool ProxyVideoSurface::start(const QVideoSurfaceFormat& format)
 {
     qDebug() << "ProxyVideoSurface::start";
+
     for (auto connector : connectors_)
     {
-        QAbstractVideoSurface *surface = connector.second->getVideoSurface();
+        QAbstractVideoSurface* surface = connector.second->getVideoSurface();
+        
         if (surface)
             surface->start(format);
     }
@@ -81,16 +69,19 @@ bool ProxyVideoSurface::start(const QVideoSurfaceFormat &format)
 void ProxyVideoSurface::stop()
 {
     qDebug() << "ProxyVideoSurface::stop";
+    
     for (auto connector : connectors_)
     {
-        QAbstractVideoSurface *surface = connector.second->getVideoSurface();
+        QAbstractVideoSurface* surface = connector.second->getVideoSurface();
+
         if (surface)
             surface->stop();
     }
+
     QAbstractVideoSurface::stop();
 }
 
-MediaSourceConnector *ProxyVideoSurface::getMediaSource(int id)
+MediaSourceConnector* ProxyVideoSurface::getMediaSource(int id)
 {
     qDebug() << "ProxyVideoSurface::getMediaSource" << id;
 

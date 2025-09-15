@@ -1,4 +1,4 @@
-/* 
+/*
  * Author: QUBYX Software Technologies LTD HK
  * Copyright: QUBYX Software Technologies LTD HK
  */
@@ -18,10 +18,10 @@ public:
     void setDisplayProfile(int displayId, QString filePath);
     void setWorkingProfile(QString filePath);
 
-    virtual QImage requestImage(const QString &id, QSize *size, const QSize& requestedSize);
+    virtual QImage requestImage(const QString& id, QSize* size, const QSize& requestedSize);
 
 private:
-    QubyxProfile *workingSpaceProfile_;
+    QubyxProfile* workingSpaceProfile_;
     std::map<int, QubyxProfile*> displayProfile_;
 };
 

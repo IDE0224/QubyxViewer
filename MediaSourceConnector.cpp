@@ -1,4 +1,4 @@
-/* 
+/*
  * Author: QUBYX Software Technologies LTD HK
  * Copyright: QUBYX Software Technologies LTD HK
  */
@@ -7,19 +7,20 @@
 #include <QAbstractVideoSurface>
 #include <QDebug>
 
-MediaSourceConnector::MediaSourceConnector(QObject *parent) : QObject(parent), videoSurface_(nullptr)
+MediaSourceConnector::MediaSourceConnector(QObject* parent) : QObject(parent), videoSurface_(nullptr)
 {
 }
 
-void MediaSourceConnector::setVideoSurface(QAbstractVideoSurface *surface)
+void MediaSourceConnector::setVideoSurface(QAbstractVideoSurface* surface)
 {
     videoSurface_ = surface;
     qDebug() << "MediaSourceConnector::setVideoSurface" << this << surface;
+
     if (surface)
         qDebug() << surface->supportedPixelFormats();
 }
 
-QAbstractVideoSurface *MediaSourceConnector::getVideoSurface()
+QAbstractVideoSurface* MediaSourceConnector::getVideoSurface()
 {
     return videoSurface_;
 }

@@ -1,11 +1,11 @@
-/* 
+/*
  * Author: QUBYX Software Technologies LTD HK
  * Copyright: QUBYX Software Technologies LTD HK
  */
 
 #include "qmediaplayerwrapper.h"
 
-QMediaPlayerWrapper::QMediaPlayerWrapper(QObject *parent) : QMediaPlayer(parent)
+QMediaPlayerWrapper::QMediaPlayerWrapper(QObject* parent) : QMediaPlayer(parent)
 {
 }
 

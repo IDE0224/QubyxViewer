@@ -1,4 +1,4 @@
-/* 
+/*
  * Author: QUBYX Software Technologies LTD HK
  * Copyright: QUBYX Software Technologies LTD HK
  */
@@ -22,7 +22,7 @@ const QString VISIBLE = "visible";
 const QString MAIN_DISPLAY_ID = "main_display_id";
 
 
-QubyxViewerData::QubyxViewerData(QObject *parent) : QObject(parent)
+QubyxViewerData::QubyxViewerData(QObject* parent) : QObject(parent)
 {
     qRegisterMetaType<MediaSourceConnector*>();
 
@@ -31,16 +31,16 @@ QubyxViewerData::QubyxViewerData(QObject *parent) : QObject(parent)
 
     qDebug() << "displays:" << CurrentDisplays::DisplayCount();
 
-    for (int i=0;i<CurrentDisplays::DisplayCount();i++)
+    for (int i = 0;i < CurrentDisplays::DisplayCount();i++)
     {
         int id = CurrentDisplays::DisplayId(i);
-        model_.append(new ViewerWindowInfo(CurrentDisplays::DisplayId(i), visible_[id], mainDisplayId_==id) );
+        model_.append(new ViewerWindowInfo(CurrentDisplays::DisplayId(i), visible_[id], mainDisplayId_ == id));
     }
 
     lutGenerator_ = new LutGenerator();
-    for (int i=0;i<model_.length();i++)
+    for (int i = 0;i < model_.length();i++)
     {
-        ViewerWindowInfo *item = dynamic_cast<ViewerWindowInfo*>(model_[i]);
+        ViewerWindowInfo* item = dynamic_cast<ViewerWindowInfo*>(model_[i]);
         lutGenerator_->setDisplayProfile(item->displayId(), item->displayProfile());
         qDebug() << item->displayId() << item->displayProfile();
     }
@@ -58,8 +58,7 @@ QubyxViewerData::QubyxViewerData(QObject *parent) : QObject(parent)
 
     qml_.load(QUrl("qrc:/qml/main.qml"));
 
-    //connect(&qml_, SIGNAL(quit()), this, SLOT(slotQuit()));
-    QObject *item = qml_.rootObjects()[0];
+    QObject* item = qml_.rootObjects()[0];
     connect(item, SIGNAL(signalOpenWorkingProfile(QString)), this, SLOT(slotOpenWorkingProfile(QString)));
 
     QString profilePath = fileReader_.lastProfilePath();
@@ -96,14 +95,14 @@ void QubyxViewerData::readDisplayIds()
     for (int i = 0; i < CurrentDisplays::DisplayCount(); i++)
     {
         const DisplayInfo disp = CurrentDisplays::Display(i);
-        if (!displayIds_.count(disp.OSId) )
+        if (!displayIds_.count(disp.OSId))
         {
             displayIds_[disp.OSId] = ++maxId;
             visible_[maxId] = true;
         }
 
         CurrentDisplays::SetDisplayId(i, displayIds_[disp.OSId]);
-        qDebug() << i  << displayIds_[disp.OSId] << disp.OSId;
+        qDebug() << i << displayIds_[disp.OSId] << disp.OSId;
 
         if (visible_[displayIds_[disp.OSId]])
             cntVisible++;
@@ -143,7 +142,7 @@ void QubyxViewerData::writeDisplayIds()
 {
     for (int i = 0; i < model_.size(); i++)
     {
-        ViewerWindowInfo *info = dynamic_cast<ViewerWindowInfo*>(model_[i]);
+        ViewerWindowInfo* info = dynamic_cast<ViewerWindowInfo*>(model_[i]);
         visible_[info->displayId()] = info->visible();
         if (info->isMainDisplay())
             mainDisplayId_ = info->displayId();

@@ -19,8 +19,6 @@ Rectangle {
         columns: 2
         property int rectSize: 20
 
-
-
         Rectangle {
             id: rectBefore
             color: 'red'

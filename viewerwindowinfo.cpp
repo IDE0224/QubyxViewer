@@ -1,4 +1,4 @@
-/* 
+/*
  * Author: QUBYX Software Technologies LTD HK
  * Copyright: QUBYX Software Technologies LTD HK
  */
@@ -11,7 +11,8 @@ ViewerWindowInfo::ViewerWindowInfo(int dispId, bool isVisible, bool isMain) : QO
 {
     setDisplayId(dispId);
 
-    const DisplayInfo &disp = CurrentDisplays::DisplayById(dispId);
+    const DisplayInfo& disp = CurrentDisplays::DisplayById(dispId);
+    
     setGeometry(QRect(disp.left, disp.top, disp.width, disp.height));
     setName(disp.manufacturer + " " + disp.name + " " + disp.serial);
     setLutEnabled(false);
