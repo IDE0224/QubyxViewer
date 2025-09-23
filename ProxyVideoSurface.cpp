@@ -7,29 +7,28 @@
 #include "MediaSourceConnector.h"
 #include <QDebug>
 
-ProxyVideoSurface::ProxyVideoSurface(QObject* parent) : QAbstractVideoSurface(parent)
+ProxyVideoSurface::ProxyVideoSurface(QObject* parent) : QVideoSink(parent)
 {
 
 }
 
-QList<QVideoFrame::PixelFormat> ProxyVideoSurface::supportedPixelFormats(QAbstractVideoBuffer::HandleType handleType) const
+QList<QVideoFrameFormat::PixelFormat> ProxyVideoSurface::supportedPixelFormats(QVideoFrame::HandleType handleType) const
 {
-    if (handleType == QAbstractVideoBuffer::NoHandle)
+    if (handleType == QVideoFrame::NoHandle)
     {
-        return QList<QVideoFrame::PixelFormat>()
-            << QVideoFrame::Format_YUV420P
-            << QVideoFrame::Format_YV12
-            << QVideoFrame::Format_NV12
-            << QVideoFrame::Format_NV21
-            << QVideoFrame::Format_RGB32
-            << QVideoFrame::Format_ARGB32
-            << QVideoFrame::Format_BGR32
-            << QVideoFrame::Format_BGRA32
-            << QVideoFrame::Format_RGB565;
+        return QList<QVideoFrameFormat::PixelFormat>()
+            << QVideoFrameFormat::Format_YUV420P
+            << QVideoFrameFormat::Format_YV12
+            << QVideoFrameFormat::Format_NV12
+            << QVideoFrameFormat::Format_NV21
+            << QVideoFrameFormat::Format_RGBX8888
+            << QVideoFrameFormat::Format_ARGB8888
+            << QVideoFrameFormat::Format_BGRX8888
+            << QVideoFrameFormat::Format_BGRA8888;
     }
     else
     {
-        return QList<QVideoFrame::PixelFormat>();
+        return QList<QVideoFrameFormat::PixelFormat>();
     }
 }
 
@@ -43,27 +42,31 @@ bool ProxyVideoSurface::present(const QVideoFrame& frame)
 
     for (auto connector : connectors_)
     {
-        QAbstractVideoSurface* surface = connector.second->getVideoSurface();
+        QVideoSink* surface = connector.second->getVideoSurface();
         if (surface)
-            surface->present(frame);
+            surface->setVideoFrame(frame);
     }
 
     return true;
 }
 
-bool ProxyVideoSurface::start(const QVideoSurfaceFormat& format)
+bool ProxyVideoSurface::start(const QVideoFrameFormat& format)
 {
     qDebug() << "ProxyVideoSurface::start";
 
     for (auto connector : connectors_)
     {
-        QAbstractVideoSurface* surface = connector.second->getVideoSurface();
+        QVideoSink* surface = connector.second->getVideoSurface();
         
         if (surface)
-            surface->start(format);
+        {
+            // In Qt 6, QVideoSink doesn't have a start method
+            // The video sink is ready to receive frames via setVideoFrame()
+            qDebug() << "Video sink ready for format:" << format.pixelFormat();
+        }
     }
 
-    return QAbstractVideoSurface::start(format);
+    return true;
 }
 
 void ProxyVideoSurface::stop()
@@ -72,13 +75,15 @@ void ProxyVideoSurface::stop()
     
     for (auto connector : connectors_)
     {
-        QAbstractVideoSurface* surface = connector.second->getVideoSurface();
+        QVideoSink* surface = connector.second->getVideoSurface();
 
         if (surface)
-            surface->stop();
+        {
+            // In Qt 6, QVideoSink doesn't have a stop method
+            // Stop by setting an invalid frame
+            surface->setVideoFrame(QVideoFrame());
+        }
     }
-
-    QAbstractVideoSurface::stop();
 }
 
 MediaSourceConnector* ProxyVideoSurface::getMediaSource(int id)

@@ -6,21 +6,23 @@
 #ifndef PROXYVIDEOSURFACE_H
 #define PROXYVIDEOSURFACE_H
 
-#include <QAbstractVideoSurface>
+#include <QVideoSink>
+#include <QVideoFrame>
+#include <QVideoFrameFormat>
 #include <QList>
 #include <map>
 
 class MediaSourceConnector;
-class ProxyVideoSurface : public QAbstractVideoSurface
+class ProxyVideoSurface : public QVideoSink
 {
     Q_OBJECT
 public:
     ProxyVideoSurface(QObject* parent = nullptr);
 
-    QList<QVideoFrame::PixelFormat> supportedPixelFormats(QAbstractVideoBuffer::HandleType handleType = QAbstractVideoBuffer::NoHandle) const;
+    QList<QVideoFrameFormat::PixelFormat> supportedPixelFormats(QVideoFrame::HandleType handleType = QVideoFrame::NoHandle) const;
     bool present(const QVideoFrame& frame);
 
-    virtual bool start(const QVideoSurfaceFormat& format);
+    virtual bool start(const QVideoFrameFormat& format);
     virtual void stop();
 
     Q_INVOKABLE MediaSourceConnector* getMediaSource(int id);

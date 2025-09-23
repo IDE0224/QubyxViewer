@@ -1,11 +1,13 @@
-import QtQuick 2.0
-import QtQuick.Window 2.0
+import QtQuick 2.15
+import QtQuick.Window 2.15
 import "." // QTBUG-34418, singletons require explicit import to load qmldir file
 
-Item {
+Window {
     id: main
-    //x: 0
-    //y: 0
+    visible: true
+    width: 800
+    height: 600
+    title: "QubyxViewer"
 
     Repeater {
         model: displayInfo
@@ -45,7 +47,7 @@ Item {
         console.log("updateImageList");
         Qt.listOfImages = fileReader.getListOfImageFiles(filePath);
         Qt.imageIndex = 0;
-        if (Qt.listOfImages.length > 0)
+        if (Qt.listOfImages && Qt.listOfImages.length > 0)
             signalOpenImage(Qt.listOfImages[0]);
     }
 
@@ -58,7 +60,7 @@ Item {
     }
 
     function showNextImage(shift) {
-        if (Qt.listOfImages.length > 0) {
+        if (Qt.listOfImages && Qt.listOfImages.length > 0) {
             Qt.imageIndex = (Qt.imageIndex + Qt.listOfImages.length + shift)%Qt.listOfImages.length;
             signalOpenImage(Qt.listOfImages[Qt.imageIndex]);
         }

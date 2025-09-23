@@ -1,0 +1,6 @@
+#ifndef QBX_MATH_CONST
+#define QBX_MATH_CONST
+
+#define M_PI		3.14159265358979323846
+
+#endif

@@ -4,23 +4,23 @@
  */
 
 #include "MediaSourceConnector.h"
-#include <QAbstractVideoSurface>
+#include <QVideoSink>
 #include <QDebug>
 
 MediaSourceConnector::MediaSourceConnector(QObject* parent) : QObject(parent), videoSurface_(nullptr)
 {
 }
 
-void MediaSourceConnector::setVideoSurface(QAbstractVideoSurface* surface)
+void MediaSourceConnector::setVideoSurface(QVideoSink* surface)
 {
     videoSurface_ = surface;
     qDebug() << "MediaSourceConnector::setVideoSurface" << this << surface;
 
     if (surface)
-        qDebug() << surface->supportedPixelFormats();
+        qDebug() << "Video surface set successfully";
 }
 
-QAbstractVideoSurface* MediaSourceConnector::getVideoSurface()
+QVideoSink* MediaSourceConnector::getVideoSurface()
 {
     return videoSurface_;
 }

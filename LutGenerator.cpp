@@ -8,8 +8,8 @@
 #include <cmath>
 #include <vector>
 
-#include "QubyxProfile/QubyxProfile.h"
-#include "QubyxProfile/qubyxprofilechain.h"
+#include "libs/QubyxProfile.h"
+#include "libs/qubyxprofilechain.h"
 
 LutGenerator::LutGenerator() : QQuickImageProvider(QQuickImageProvider::Image)
 {

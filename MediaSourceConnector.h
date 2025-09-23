@@ -8,20 +8,21 @@
 
 #include <QObject>
 
-class QAbstractVideoSurface;
+class QVideoSink;
+Q_DECLARE_OPAQUE_POINTER(QVideoSink*)
 class MediaSourceConnector : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QAbstractVideoSurface* videoSurface READ getVideoSurface WRITE setVideoSurface)
+    Q_PROPERTY(QVideoSink* videoSurface READ getVideoSurface WRITE setVideoSurface)
     
 public:
     explicit MediaSourceConnector(QObject* parent = 0);
 
-    Q_INVOKABLE void setVideoSurface(QAbstractVideoSurface* surface);
-    Q_INVOKABLE QAbstractVideoSurface* getVideoSurface();
+    Q_INVOKABLE void setVideoSurface(QVideoSink* surface);
+    Q_INVOKABLE QVideoSink* getVideoSurface();
 
 private:
-    QAbstractVideoSurface* videoSurface_;
+    QVideoSink* videoSurface_;
 };
 
 #endif // MEDIASOURCECONNECTOR_H

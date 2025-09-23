@@ -16,6 +16,8 @@
 #include "filereader.h"
 #include "pixelhandler.h"
 #include "ProxyVideoSurface.h"
+class MediaSourceConnector;
+Q_DECLARE_OPAQUE_POINTER(MediaSourceConnector*)
 
 class LutGenerator;
 class QubyxViewerData : public QObject

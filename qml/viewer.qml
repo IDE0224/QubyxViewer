@@ -1,9 +1,8 @@
-import QtQuick 2.5
-import QtQuick.Window 2.2
-import QtQuick.Layouts 1.1
-import QtQuick.Controls 1.4
-import QtQuick.Dialogs 1.2
-import QtQuick.Controls.Styles 1.4
+import QtQuick 2.15
+import QtQuick.Window 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Controls 2.15
+import QtQuick.Dialogs 6.3
 
 Item {
     id: root
@@ -46,55 +45,51 @@ Item {
             visible: false
         }
 
-        TabView {
+        SwipeView {
             id: tabViewPreviewArea
             anchors.fill: parent
             anchors.bottomMargin: 1
-            tabsVisible: false
-            frameVisible: false
+            currentIndex: root.state === "image" ? 0 : 1
 
-            Tab {
+            Item {
                 id: contentImage
-                active: true
                 ContentImage {
                     property bool applyShader: model.lutEnabled && root.state == "image"
                 }
             }
 
-            Tab {
+            Item {
                 id: contentVideo
-                active: true
                 ContentVideo {
                     property bool applyShader: model.lutEnabled && root.state == "video"
                 }
             }
+        }
 
-            MouseArea {
-                id: windowMouseArea
-                anchors.fill: parent
-                hoverEnabled: true
-                acceptedButtons: Qt.LeftButton
-                propagateComposedEvents: true
+        MouseArea {
+            id: windowMouseArea
+            anchors.fill: parent
+            hoverEnabled: true
+            acceptedButtons: Qt.LeftButton
+            propagateComposedEvents: true
+            z: 1
 
-                onPositionChanged: {
-                    if (mainDisplay && !showSettings)
-                        showSettings = true;
+            onPositionChanged: {
+                if (mainDisplay && !showSettings)
+                    showSettings = true;
+            }
+
+            onClicked: {
+                if ((mouse.modifiers & Qt.ControlModifier) && root.state == "image") {
+                    console.log("left click " + mouse.x + " " + mouse.y);
+                    contentImage.children[0].showPixelColor(mouse.x, mouse.y, colorHint);
                 }
+            }
 
-                onClicked: {
-                    if ((mouse.modifiers & Qt.ControlModifier) && root.state == "image") {
-                        console.log("left click " + mouse.x + " " + mouse.y);
-                        contentImage.item.showPixelColor(mouse.x, mouse.y, colorHint);
-                    }
-
-                }
-
-                onDoubleClicked: {
-                    for (var i = 0; i < displayInfo.length; i++)
-                        displayInfo[i].isMainDisplay = displayInfo[i].displayId === model.displayId;
-                    root.showSettings = true;
-
-                }
+            onDoubleClicked: {
+                for (var i = 0; i < displayInfo.length; i++)
+                    displayInfo[i].isMainDisplay = displayInfo[i].displayId === model.displayId;
+                root.showSettings = true;
             }
         }
 
@@ -196,11 +191,11 @@ Item {
         if(settingsPanel.openOnCurrent_)
         {
             if(mainDisplay){
-                contentImage.item.source = filePath;
+                contentImage.children[0].source = filePath;
             }
         }
         else
-            contentImage.item.source = filePath;
+            contentImage.children[0].source = filePath;
 
         colorHint.hide();
     }

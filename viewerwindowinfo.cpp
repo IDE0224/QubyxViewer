@@ -4,8 +4,8 @@
  */
 
 #include "viewerwindowinfo.h"
-#include "DisplayInfo/CurrentDisplays.h"
-#include "OSUtils/profile.h"
+#include "libs/CurrentDisplays.h"
+#include "libs/profile.h"
 
 ViewerWindowInfo::ViewerWindowInfo(int dispId, bool isVisible, bool isMain) : QObject(nullptr)
 {
@@ -13,8 +13,8 @@ ViewerWindowInfo::ViewerWindowInfo(int dispId, bool isVisible, bool isMain) : QO
 
     const DisplayInfo& disp = CurrentDisplays::DisplayById(dispId);
     
-    setGeometry(QRect(disp.left, disp.top, disp.width, disp.height));
-    setName(disp.manufacturer + " " + disp.name + " " + disp.serial);
+    setGeometry(QRect(disp.left(), disp.top(), disp.width(), disp.height()));
+    setName(disp.manufacture() + " " + disp.name() + " " + disp.serial());
     setLutEnabled(false);
     setDisplayProfile(OSProfile::currentDisplayProfile(disp.OSId));
 

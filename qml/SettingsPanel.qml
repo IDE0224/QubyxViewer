@@ -1,8 +1,7 @@
-import QtQuick 2.0
-import QtQuick.Layouts 1.1
-import QtQuick.Controls 1.4
-import QtQuick.Dialogs 1.2
-import QtQuick.Controls.Styles 1.4
+import QtQuick 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Controls 2.15
+import QtQuick.Dialogs 6.3
 import "." // QTBUG-34418, singletons require explicit import to load qmldir file
 
 Rectangle {
@@ -27,8 +26,8 @@ Rectangle {
             Slider {
                 id: sliderVideoPosition
                 value: videoPosition
-                minimumValue: 0
-                maximumValue: videoDuration
+                from: 0
+                to: videoDuration
                 orientation: Qt.Horizontal
                 stepSize: 0
                 Layout.fillWidth: true
@@ -62,10 +61,9 @@ Rectangle {
             }
             Slider {
                 id: sliderVolume
-                maximumValue: 100
+                to: 100
                 value: volume
                 stepSize: 1
-                tickmarksEnabled: true
                 Layout.maximumWidth: 100
 
                 onValueChanged: {
@@ -257,7 +255,7 @@ Rectangle {
                 SpinBox {
                     id: spinboxSlideShow
                     enabled: chboxSlide.checked
-                    minimumValue: 1
+                    from: 1
                     value: SlideShowModel.slideShowInterval
 
                     onValueChanged: SlideShowModel.slideShowInterval = value
@@ -283,7 +281,7 @@ Rectangle {
                 SpinBox {
                     id: spinboxToggleAuto
                     enabled: chboxToggle.checked
-                    minimumValue: 1
+                    from: 1
                     value: SlideShowModel.lutToggleInterval
                     onValueChanged: SlideShowModel.lutToggleInterval = value
                     Connections {
@@ -300,7 +298,6 @@ Rectangle {
         visible: false
         modality: Qt.WindowModal
         title: "Choose a image file"
-        selectExisting: true
         nameFilters: [ "Image/Video files (*.png *.jpg *.jpeg *.tif *.tiff *.bmp *.avi *.wmv *.mp4 *.mov)",
                        "Image files (*.png *.jpg *.jpeg *.tif *.tiff *.bmp)",
                        "Video files (*.avi *.wmv *.mp4 *.mov)",
@@ -344,7 +341,6 @@ Rectangle {
         visible: false
         modality: Qt.WindowModal
         title: "Choose a ICC profile file"
-        selectExisting: true
         nameFilters: [ "ICC Profiles (*.icc *.icm)" ]
         onAccepted: {
             signalOpenWorkingProfile(fileUrl);

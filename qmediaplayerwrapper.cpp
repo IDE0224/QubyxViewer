@@ -11,10 +11,12 @@ QMediaPlayerWrapper::QMediaPlayerWrapper(QObject* parent) : QMediaPlayer(parent)
 
 void QMediaPlayerWrapper::setMediaFile(QString url)
 {
-    QMediaPlayer::setMedia(QUrl::fromLocalFile(url));
+    // Qt 6: Use setSource() instead of setMedia()
+    setSource(QUrl::fromLocalFile(url));
 }
 
 bool QMediaPlayerWrapper::isPlaying()
 {
-    return state() == QMediaPlayer::PlayingState;
+    // Qt 6: Use playbackState() instead of state()
+    return playbackState() == QMediaPlayer::PlayingState;
 }

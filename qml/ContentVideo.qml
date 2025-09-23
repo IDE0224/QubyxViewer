@@ -1,10 +1,10 @@
-import QtQuick 2.1
-import QtMultimedia 5.0
+import QtQuick 2.15
+import QtMultimedia 6.3
 
 Item {
     id: root
 
-    VideoOutput {
+    Video {
         id: videoOutput
         source: proxyVideoSurface.getMediaSource(model.displayId)
         smooth: true
