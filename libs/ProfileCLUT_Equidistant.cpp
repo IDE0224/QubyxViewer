@@ -1,6 +1,6 @@
 /* 
  * File:   ProfileCLUT_Equidistant.cpp
- * Author: Vitaly Bondar
+ * Author: QUBYX Software Technologies LTD HK
  * 
  * Created on 28 липня 2011, 16:37
  */

@@ -1,6 +1,6 @@
 /* 
  * File:   MatrixSolve.cpp
- * Author: Vitaly Bondar
+ * Author: QUBYX Software Technologies LTD HK
  * 
  * Created on 27 липня 2011, 11:25
  */

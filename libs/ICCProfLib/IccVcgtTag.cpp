@@ -1,6 +1,6 @@
 /* 
  * File:   IccVCGTTag.cpp
- * Author: Vitaly Bondar
+ * Author: QUBYX Software Technologies LTD HK
  * 
  * Created on 15.11.2012
  */

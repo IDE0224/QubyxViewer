@@ -1,6 +1,6 @@
 /* 
  * File:   SystemInfo.h
- * Author: Roman
+ * Author: QUBYX Software Technologies LTD HK
  *
  * Created on 2 липня 2013, 11:26
  */

@@ -1,6 +1,6 @@
 /* 
  * File:   Regression.h
- * Author: qubyx
+ * Author: QUBYX Software Technologies LTD HK
  *
  * Created on 29 листопада 2010, 12:51
  */

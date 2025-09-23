@@ -1,6 +1,6 @@
 /* 
  * File:   Rec709Curve.h
- * Author: Vitaly Bondar
+ * Author: QUBYX Software Technologies LTD HK
  *
  * Created on 3 березня 2012, 14:27
  */

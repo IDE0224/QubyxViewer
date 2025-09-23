@@ -23,7 +23,7 @@
 /* ---------------------------------------------------------------------
 
 Conversions between UTF32, UTF-16, and UTF-8. Source code file.
-Author: Mark E. Davis, 1994.
+Author: QUBYX Software Technologies LTD HK
 Rev History: Rick McGowan, fixes & updates May 2001.
 Sept 2001: fixed const & error conditions per
 mods suggested by S. Parent & A. Lillich.

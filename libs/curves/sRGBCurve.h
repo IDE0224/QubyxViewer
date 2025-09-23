@@ -1,6 +1,6 @@
 /* 
  * File:   sRGBCurve.h
- * Author: Vitaly_Bondar
+ * Author: QUBYX Software Technologies LTD HK
  *
  * Created on 23 січня 2012, 15:18
  */

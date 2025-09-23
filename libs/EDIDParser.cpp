@@ -1,6 +1,6 @@
 /* 
  * File:   EDIDParser.cpp
- * Author: Vitaly_Bondar
+ * Author: QUBYX Software Technologies LTD HK
  * 
  * Created on 16 січня 2012, 14:26
  */

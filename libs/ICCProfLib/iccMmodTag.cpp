@@ -1,6 +1,6 @@
 /* 
  * File:   iccMmodTag.cpp
- * Author: Roman
+ * Author: QUBYX Software Technologies LTD HK
  * 
  * Created on 16 серпня 2013, 14:06
  */

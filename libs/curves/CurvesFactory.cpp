@@ -1,6 +1,6 @@
 /* 
  * File:   CurvesFactory.cpp
- * Author: Vitaly_Bondar
+ * Author: QUBYX Software Technologies LTD HK
  * 
  * Created on 20 січня 2012, 16:17
  */

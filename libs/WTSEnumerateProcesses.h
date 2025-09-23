@@ -1,6 +1,6 @@
 /* 
  * File:   WTSEnumerateProcesses.h
- * Author: Roman
+ * Author: QUBYX Software Technologies LTD HK
  *
  * Created on 3 жовтня 2013, 12:24
  */

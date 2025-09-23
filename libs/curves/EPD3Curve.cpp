@@ -1,6 +1,6 @@
 /* 
  * File:   EPD3Curve.cpp
- * Author: qubyx
+ * Author: QUBYX Software Technologies LTD HK
  * 
  * Created on 18 березня 2011, 15:36
  */

@@ -1,6 +1,6 @@
 /* 
  * File:   UsefulTools.cpp
- * Author: Serg
+ * Author: QUBYX Software Technologies LTD HK
  * 
  * Created on May 5, 2011, 11:55 AM
  */

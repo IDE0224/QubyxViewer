@@ -1,6 +1,6 @@
 /* 
  * File:   cppfunc.h
- * Author: Vitaly Bondar
+ * Author: QUBYX Software Technologies LTD HK
  */
 
 #ifndef CPPFUNC_H

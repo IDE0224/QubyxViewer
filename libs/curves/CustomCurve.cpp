@@ -1,6 +1,6 @@
 /* 
  * File:   CustomCurve.cpp
- * Author: Roman
+ * Author: QUBYX Software Technologies LTD HK
  * 
  * Created on 28 квітня 2014, 10:00
  */

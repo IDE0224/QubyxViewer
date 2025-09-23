@@ -1,6 +1,6 @@
 /* 
  * File:   ColorUnitsConversion.h
- * Author: Vitaly Bondar
+ * Author: QUBYX Software Technologies LTD HK
  *
  * Created on 13 липня 2011, 12:35
  */

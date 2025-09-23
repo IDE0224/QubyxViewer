@@ -73,7 +73,7 @@ value will point to the illegal value that caused the problem. E.g.,
 in UTF-8 when a sequence is malformed, it points to the start of the
 malformed sequence.  
 
-Author: Mark E. Davis, 1994.
+Author: QUBYX Software Technologies LTD HK
 Rev History: Rick McGowan, fixes & updates May 2001.
 Fixes & updates, Sept 2001.
 

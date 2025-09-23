@@ -1,6 +1,6 @@
 /*
  * File:   main.cpp
- * Author: Roman
+ * Author: QUBYX Software Technologies LTD HK
  *
  * Created on 28 листопада 2012, 9:31
  */
