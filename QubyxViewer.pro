@@ -6,6 +6,8 @@ CONFIG += qt
 TARGET = QubyxViewer
 TEMPLATE = app
 
+# Graphics1 support is now provided via DLL
+
 # Source files
 SOURCES += \
     main.cpp \
@@ -31,8 +33,7 @@ HEADERS += \
 
 # Library source files
 SOURCES += \
-    libs/AmdDisplayLibrary.cpp \
-    libs/amdcombineddisplaysplit.cpp \
+    Graphics1DisplayStaticWrapper.cpp \
     libs/CalibrotionPresetsManager.cpp \
     libs/CalParams.h \
     libs/CAT.cpp \
@@ -79,8 +80,7 @@ SOURCES += \
 
 # Library header files
 HEADERS += \
-    libs/AmdDisplayLibrary.h \
-    libs/amdcombineddisplaysplit.h \
+    Graphics1DisplayStaticWrapper.h \
     libs/BaseParams.h \
     libs/CalibrotionPresetsManager.h \
     libs/CAT.h \
@@ -220,7 +220,7 @@ RESOURCES += resources.qrc
 # Include paths
 INCLUDEPATH += libs
 INCLUDEPATH += libs/ICCProfLib
-INCLUDEPATH += libs/AMD
+# Graphics1 headers are now in the DLL
 INCLUDEPATH += libs/Eigen
 
 # Qt Multimedia includes

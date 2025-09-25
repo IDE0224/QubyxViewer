@@ -1,0 +1,5 @@
+EXPORTS
+graphics1DisplayDLL_Load
+graphics1DisplayDLL_Unload
+graphics1DisplayDLL_EnumerateDisplays
+graphics1DisplayDLL_UpdateDisplayInfo

@@ -16,7 +16,7 @@
 #include "LgMedicalUartConnectionInfo.h"
 
 #ifdef Q_OS_WIN
-#include "amdcombineddisplaysplit.h"
+#include "Graphics1DisplayStaticWrapper.h"
 #endif
 
 #ifdef Q_OS_MAC
@@ -50,9 +50,9 @@ void DisplayEnumerator::EnumerateDisplays()
         return;
 
 #ifdef Q_OS_WIN
-    AMDCombinedDisplaySplit amdSplitter;
-    if (amdSplitter.enumerateCombinedDisplaysInfo())
-        amdSplitter.updateDisplaysInfo(geometry, resolution, edids, osIds, osDevs, videoadapterkey, videoadaptername);
+    Graphics1DisplayStaticWrapper graphics1Wrapper;
+    if (graphics1Wrapper.load() && graphics1Wrapper.enumerateDisplays())
+        graphics1Wrapper.updateDisplayInfo(geometry, resolution, edids, osIds, osDevs, videoadapterkey, videoadaptername);
 #endif
 
     FillInfo(geometry, resolution, edids, osIds, osDevs, videoadapterkey, videoadaptername);
